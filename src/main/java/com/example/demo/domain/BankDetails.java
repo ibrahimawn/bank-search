@@ -2,7 +2,7 @@ package com.example.demo.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class BankDetails {
+public class BankDetails implements Pageable {
 
     @JsonProperty("ifsc")
     private String ifsc;
