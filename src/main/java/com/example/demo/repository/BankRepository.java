@@ -11,8 +11,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BankRepository extends JpaRepository<Bank, Long> {
 
-    @Query(value = "select ifsc, bank_name, branch, state, city, district, address from bank_branches where ifsc = :ifsc ORDER BY ?#{#pageable}",
-            countQuery = "select count(*) from branches where ifsc = :ifsc ORDER BY ?#{#pageable}",
+    @Query(value = "select ifsc, bank_name, branch, state, city, district, address from bank_branches where ifsc = upper(:ifsc) ORDER BY ?#{#pageable}",
+            countQuery = "select count(*) from branches where ifsc = upper(:ifsc) ORDER BY ?#{#pageable}",
             nativeQuery = true)
     Page<Object[]> findByIfsc(@Param("ifsc") String ifsc, Pageable pageable);
 }
